@@ -20,3 +20,17 @@ elementAt (y:ys) n
           | n < 1 = Nothing
           | n == 1 = Just y
           | otherwise = elementAt ys (n - 1)
+
+-- length of a list
+myLength :: [a] -> Int
+myLength [] = 0
+myLength (x:xs) = 1 + myLength xs
+
+-- reverse a list
+myReverse :: [a] -> [a]
+myReverse [] = []
+myReverse (x:xs) = (myReverse xs) ++ [x]
+
+-- list is palindrome
+isPalindrome :: (Eq a) => [a] -> Bool
+isPalindrome xs = xs == (reverse xs)
