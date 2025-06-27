@@ -34,3 +34,11 @@ myReverse (x:xs) = (myReverse xs) ++ [x]
 -- list is palindrome
 isPalindrome :: (Eq a) => [a] -> Bool
 isPalindrome xs = xs == (reverse xs)
+
+-- flatten nested lists
+data NestedList a = Elem a | List [NestedList a]
+
+flatten :: NestedList a -> [a]
+flatten (List []) = []
+flatten (Elem x) = [x]
+flatten (List (x:xs)) = flatten x ++ flatten (List xs)
