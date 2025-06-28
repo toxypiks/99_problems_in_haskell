@@ -1,3 +1,5 @@
+import Data.List
+
 -- find last element of a list
 
 myLast :: [a] -> Maybe a
@@ -42,3 +44,8 @@ flatten :: NestedList a -> [a]
 flatten (List []) = []
 flatten (Elem x) = [x]
 flatten (List (x:xs)) = flatten x ++ flatten (List xs)
+
+-- eliminate consecutive duplicates of list elements
+
+compress :: Eq a => [a] -> [a]
+compress = map head . group
