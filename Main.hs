@@ -49,3 +49,7 @@ flatten (List (x:xs)) = flatten x ++ flatten (List xs)
 
 compress :: Eq a => [a] -> [a]
 compress = map head . group
+
+-- run-length encoding of a list
+
+encode xs = map (\x -> (length x,head x)) (group xs)
