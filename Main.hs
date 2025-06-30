@@ -50,6 +50,12 @@ flatten (List (x:xs)) = flatten x ++ flatten (List xs)
 compress :: Eq a => [a] -> [a]
 compress = map head . group
 
+-- pack consecutive duplicates of list elements into sublists
+
+pack (x:xs) = let (first,rest) = span (==x) xs
+               in (x:first) : pack rest
+pack [] = []
+
 -- run-length encoding of a list
 
 encode xs = map (\x -> (length x,head x)) (group xs)
