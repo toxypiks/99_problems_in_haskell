@@ -5,14 +5,17 @@ import Data.List
 myLast :: [a] -> Maybe a
 myLast [] = Nothing
 myLast [x] = Just x
-myLast (x:xs) = myLast xs
+myLast (_:xs) = myLast xs
 
 -- find penultimate element of list
 
 myButLast :: [a] -> Maybe a
 myButLast [x] = Nothing
-myButLast [x, _ ] = Just x
+myButLast [x,_] = Just x
 myButLast (x:xs) = myButLast xs
+
+myButLast' :: [a] -> a
+myButLast' = last . init
 
 -- find element of list at given position
 
